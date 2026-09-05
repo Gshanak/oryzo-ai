@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORYZO — Made for Mugs, Built for Tables</title>
+<meta name="description" content="Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  --color-warm-cream: #ffedd7;
+  --color-walnut-shadow: #100904;
+  --color-bark-brown: #382416;
+  --color-cork-border: #40372e;
+  --color-driftwood: #6c5f51;
+  --color-ember-accent: #dc5000;
+  --color-pure-black: #000000;
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arial: 'Arial', ui-sans-serif, system-ui, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background: var(--color-walnut-shadow);
+  color: var(--color-warm-cream);
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* Typography */
+.text-display { font-size: 51px; font-weight: 500; line-height: 0.9; text-transform: uppercase; }
+.text-heading { font-size: 41px; font-weight: 500; line-height: 0.9; text-transform: uppercase; }
+.text-heading-sm { font-size: 24px; font-weight: 500; line-height: 1.09; text-transform: uppercase; }
+.text-subheading { font-size: 18px; font-weight: 500; line-height: 1; text-transform: uppercase; }
+.text-body { font-size: 29px; font-weight: 400; line-height: 1.26; text-transform: none; }
+.text-caption { font-size: 14px; font-weight: 500; line-height: 1.2; text-transform: uppercase; }
+.text-micro { font-size: 12px; font-weight: 500; line-height: 1; text-transform: uppercase; }
+.text-legal { font-family: var(--font-arial); font-size: 8px; font-weight: 500; line-height: 1.2; text-transform: uppercase; }
+.text-ember { color: var(--color-ember-accent); }
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px; background: transparent;
+}
+.nav .wordmark { font-size: 14px; font-weight: 500; text-transform: uppercase; color: var(--color-warm-cream); letter-spacing: 0.02em; }
+.nav .items { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav .link { font-size: 12px; font-weight: 500; text-transform: uppercase; color: var(--color-warm-cream); padding-bottom: 4px; position: relative; transition: opacity 0.2s ease; }
+.nav .link:hover { opacity: 0.7; }
+.nav .link.active::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; border-bottom: 1px dashed var(--color-cork-border); }
+
+/* Sidebar */
+.sidebar-label {
+  position: fixed; right: 12px; top: 50%;
+  transform: translateY(-50%) rotate(90deg); transform-origin: right center;
+  font-size: 10px; font-weight: 500; text-transform: uppercase; color: var(--color-warm-cream);
+  white-space: nowrap; letter-spacing: 0.05em; z-index: 50; pointer-events: none;
+}
+
+/* Hero */
+.hero { position: relative; min-height: 100vh; width: 100vw; overflow: hidden; background: var(--color-walnut-shadow); }
+.hero .bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(56,36,22,0.6) 0%, var(--color-walnut-shadow) 65%); }
+.hero .lockup { position: absolute; top: 120px; left: 24px; z-index: 10; }
+.hero .tagline { font-size: 12px; font-weight: 500; text-transform: uppercase; color: var(--color-warm-cream); margin-bottom: 12px; letter-spacing: 0.01em; }
+.hero .big-wordmark { font-size: 51px; font-weight: 500; text-transform: uppercase; color: var(--color-warm-cream); line-height: 0.9; letter-spacing: normal; }
+.hero .info-card { position: absolute; bottom: 45px; left: 24px; max-width: 340px; background: rgba(16,9,4,0.72); backdrop-filter: blur(8px); border-radius: 12px; padding: 24px; border: 1px solid var(--color-cork-border); z-index: 10; }
+.hero .video-thumb { position: absolute; bottom: 45px; right: 24px; width: 140px; height: 84px; background: var(--color-bark-brown); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--color-cork-border); transition: opacity 0.2s ease; cursor: pointer; z-index: 10; }
+.hero .video-thumb:hover { opacity: 0.85; }
+.hero .scroll-cue { position: absolute; bottom: 45px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 10; }
+.hero .scroll-line { width: 1px; height: 32px; background: var(--color-cork-border); }
+
+/* Divider */
+.divider-wrapper { width: 100vw; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.divider-dashed { width: 100%; height: 0; border: none; border-top: 1px dashed var(--color-cork-border); }
+.divider-label { font-size: 10px; font-weight: 500; text-transform: uppercase; color: var(--color-driftwood); letter-spacing: 0.05em; }
+
+/* Product Reveal */
+.reveal-section { min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; background: var(--color-walnut-shadow); padding: 68px 24px; position: relative; }
+.reveal-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; width: 100%; max-width: 1400px; }
+.reveal-left { display: flex; justify-content: flex-start; }
+.reveal-left h2 { color: var(--color-warm-cream); text-align: left; }
+.reveal-center { display: flex; align-items: center; justify-content: center; }
+.reveal-placeholder { width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 60px rgba(220,80,0,0.08)); }
+.reveal-right { display: flex; justify-content: flex-end; }
+.reveal-right p { color: var(--color-warm-cream); max-width: 360px; text-align: left; }
+
+/* Features */
+.features-section { min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; background: var(--color-walnut-shadow); padding: 68px 24px; }
+.features-container { width: 100%; max-width: 1200px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feature-card { background: rgba(56,36,22,0.3); border-radius: 12px; padding: 24px; border: 1px solid var(--color-cork-border); display: flex; flex-direction: column; gap: 18px; }
+.feature-num { font-size: 12px; font-weight: 500; text-transform: uppercase; color: var(--color-ember-accent); }
+
+/* Contact */
+.contact-section { min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; background: var(--color-walnut-shadow); padding: 68px 24px; }
+.contact-container { width: 100%; max-width: 800px; }
+.contact-form { display: flex; align-items: center; gap: 18px; max-width: 500px; }
+.contact-footer { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 18px; }
+
+/* Buttons */
+.btn-pill { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--color-bark-brown); color: var(--color-warm-cream); border-radius: 36px; padding: 14px 24px; font-size: 14px; font-weight: 500; text-transform: uppercase; line-height: 1; transition: opacity 0.2s ease; border: none; cursor: pointer; }
+.btn-pill:hover { opacity: 0.85; }
+.btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-warm-cream); border: 1px solid var(--color-warm-cream); border-radius: 22.5px; padding: 7.5px 0; font-size: 14px; font-weight: 500; text-transform: uppercase; line-height: 1; transition: background 0.2s ease; cursor: pointer; }
+.btn-ghost:hover { background: rgba(255,237,215,0.06); }
+
+/* Link */
+.link-underline { display: inline-block; background: transparent; color: var(--color-warm-cream); padding: 0; font-size: 14px; font-weight: 500; text-transform: uppercase; line-height: 1; border-bottom: 1px solid var(--color-warm-cream); transition: opacity 0.2s ease; text-decoration: none; }
+.link-underline:hover { opacity: 0.7; }
+
+/* Input */
+.input-underline { background: transparent; border: none; border-bottom: 1px solid var(--color-warm-cream); color: var(--color-warm-cream); padding: 1px 2px; font-family: var(--font-display); font-size: 14px; font-weight: 500; text-transform: uppercase; outline: none; border-radius: 0; padding-right: 36px; }
+.input-underline::placeholder { color: var(--color-driftwood); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root { }
+  .hero .big-wordmark { font-size: 36px; }
+  .hero .info-card { bottom: 18px; left: 12px; right: 12px; max-width: none; }
+  .hero .video-thumb, .hero .sidebar-label, .hero .scroll-cue { display: none; }
+  .hero .lockup { top: 100px; left: 12px; }
+  .reveal-grid { grid-template-columns: 1fr; gap: 31px; text-align: left; }
+  .reveal-left, .reveal-right { justify-content: flex-start; }
+  .reveal-right p { max-width: 100%; }
+  .reveal-center { order: -1; }
+  .reveal-placeholder { width: 140px; height: 140px; }
+  .reveal-placeholder svg { width: 140px; height: 140px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .contact-form { flex-direction: column; align-items: stretch; gap: 24px; }
+  .contact-form .btn-pill { width: 100%; }
+  .nav .items { gap: 12px; }
+  .nav .link { font-size: 10px; }
+  .nav .wordmark { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="#hero" class="wordmark">ORYZO</a>
+  <ul class="items">
+    <li><a href="#hero" class="link active">INTRO</a></li>
+    <li><a href="#features" class="link">FEATURES</a></li>
+    <li><a href="#product" class="link">PRODUCT</a></li>
+    <li><a href="#contact" class="link">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar-label">ORYZO 1-MODEL</div>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div class="bg"></div>
+  <div class="lockup">
+    <p class="tagline">MADE FOR MUGS, BUILT FOR TABLES.</p>
+    <h1 class="big-wordmark">ORYZO</h1>
+  </div>
+  <div class="info-card">
+    <p class="text-caption">
+      DESIGNED BY <span class="text-ember">LUSION</span>, THE AWARD-WINNING DESIGN STUDIO.
+    </p>
+    <hr class="divider-dashed" style="margin: 12px 0;">
+    <p class="text-body" style="font-size: 14px; line-height: 1.4;">
+      A cork coaster that treats the simplest object like a museum artifact.
+    </p>
+  </div>
+  <div class="video-thumb">
+    <span class="text-micro" style="font-size: 10px;">ORYZO</span>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="10" cy="10" r="9" stroke="#ffedd7" stroke-width="1"/>
+      <path d="M8 6.5L14 10L8 13.5V6.5Z" fill="#ffedd7"/>
+    </svg>
+  </div>
+  <div class="scroll-cue">
+    <span class="text-micro">SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider-wrapper">
+  <hr class="divider-dashed">
+  <span class="divider-label">01 — THE OBJECT</span>
+</div>
+
+<!-- Product Reveal 1 -->
+<section id="product" class="reveal-section">
+  <div class="reveal-grid">
+    <div class="reveal-left">
+      <h2 class="text-heading">ISN'T JUST A COASTER.</h2>
+    </div>
+    <div class="reveal-center">
+      <div class="reveal-placeholder">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="90" fill="#382416"/>
+          <circle cx="100" cy="100" r="90" stroke="#40372e" stroke-width="1"/>
+          <circle cx="100" cy="100" r="72" fill="#100904" opacity="0.4"/>
+          <circle cx="100" cy="100" r="72" stroke="#6c5f51" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <circle cx="100" cy="100" r="8" fill="#40372e"/>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <p class="text-body">Designed to lift, insulate, and grip in all the right ways. Oryzo makes the simplest moment feel considered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider-wrapper">
+  <hr class="divider-dashed">
+  <span class="divider-label">02 — THE MATERIAL</span>
+</div>
+
+<!-- Product Reveal 2 -->
+<section id="material" class="reveal-section">
+  <div class="reveal-grid">
+    <div class="reveal-left">
+      <h2 class="text-heading">PRESSED CORK. NOTHING MORE.</h2>
+    </div>
+    <div class="reveal-center">
+      <div class="reveal-placeholder">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="90" fill="#382416"/>
+          <circle cx="100" cy="100" r="90" stroke="#40372e" stroke-width="1"/>
+          <circle cx="100" cy="100" r="72" fill="#100904" opacity="0.4"/>
+          <circle cx="100" cy="100" r="72" stroke="#6c5f51" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <circle cx="100" cy="100" r="8" fill="#40372e"/>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <p class="text-body">Sourced from sustainable Portuguese cork forests. Each piece is pressed and precision-cut to a perfect 8mm thickness — no veneers, no composites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="features-section">
+  <div class="features-container">
+    <h2 class="text-heading" style="margin-bottom: 45px;">
+      THREE THINGS IT DOES <br>
+      <span class="text-ember">EXCEPTIONALLY WELL.</span>
+    </h2>
+    <hr class="divider-dashed" style="margin-bottom: 45px;">
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-num">01</span>
+        <h3 class="text-heading-sm">LIFT</h3>
+        <p class="text-body" style="font-size: 18px; line-height: 1.26;">Raised 8mm on a dense cork base — your table never touches heat or condensation.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-num">02</span>
+        <h3 class="text-heading-sm">INSULATE</h3>
+        <p class="text-body" style="font-size: 18px; line-height: 1.26;">Natural cork thermal resistance keeps hot mugs warm and cold drinks chilled.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-num">03</span>
+        <h3 class="text-heading-sm">GRIP</h3>
+        <p class="text-body" style="font-size: 18px; line-height: 1.26;">A precision-cut micro-texture on the underside holds position on any surface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider-wrapper">
+  <hr class="divider-dashed">
+  <span class="divider-label">03 — CONTACT</span>
+</div>
+
+<!-- Contact -->
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <p class="text-micro text-ember" style="margin-bottom: 18px;">BUILT BY</p>
+    <h2 class="text-display" style="margin-bottom: 24px;">GET YOURS.</h2>
+    <p class="text-body" style="margin-bottom: 45px; max-width: 500px;">
+      Oryzo is a limited-run object. Enter your email and we'll let you know when the next batch ships.
+    </p>
+    <form class="contact-form" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="YOUR EMAIL" class="input-underline" style="flex: 1;">
+      <button type="submit" class="btn-pill">NOTIFY ME</button>
+    </form>
+    <hr class="divider-dashed" style="margin: 68px 0 24px;">
+    <div class="contact-footer">
+      <div>
+        <p class="text-micro">ORYZO</p>
+        <p class="text-legal" style="margin-top: 6px; color: var(--color-driftwood);">* DESIGNED IN-HOUSE. CORK SOURCED SUSTAINABLY.</p>
+      </div>
+      <a href="https://lusion.com" class="link-underline text-ember" target="_blank" rel="noopener noreferrer">LUSION STUDIO ↗</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
