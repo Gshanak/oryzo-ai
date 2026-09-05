@@ -1,0 +1,382 @@
+/* ================================================================
+   ORYZO AI — Global Stylesheet
+   Darkroom product editorial. Cream typography on warm darkness.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* ---- Colors ---- */
+  --color-warm-cream: #ffedd7;
+  --color-walnut-shadow: #100904;
+  --color-bark-brown: #382416;
+  --color-cork-border: #40372e;
+  --color-driftwood: #6c5f51;
+  --color-ember-accent: #dc5000;
+  --color-pure-black: #000000;
+
+  /* ---- Typography — Font Families ---- */
+  --font-halyard-display-variable: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arial: 'Arial', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Typography — Scale ---- */
+  --text-subheading: 18px;
+  --leading-subheading: 1;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.09;
+  --text-body: 29px;
+  --leading-body: 1.26;
+  --text-heading: 41px;
+  --leading-heading: 0.9;
+  --text-display: 51px;
+  --leading-display: 0.9;
+
+  /* ---- Typography — Weights ---- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* ---- Spacing ---- */
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-9: 9px;
+  --spacing-10: 10px;
+  --spacing-12: 12px;
+  --spacing-14: 14px;
+  --spacing-18: 18px;
+  --spacing-24: 24px;
+  --spacing-31: 31px;
+  --spacing-41: 41px;
+  --spacing-45: 45px;
+  --spacing-68: 68px;
+  --spacing-204: 204px;
+
+  /* ---- Layout ---- */
+  --card-padding: 24px;
+  --element-gap: 18px;
+
+  /* ---- Border Radius ---- */
+  --radius-xl: 12px;
+  --radius-2xl: 22.5px;
+  --radius-3xl: 36px;
+  --radius-full: 9999px;
+
+  --radius-cards: 12px;
+  --radius-inputs: 0px;
+  --radius-full-round: 9999px;
+  --radius-buttons-pill: 36px;
+  --radius-buttons-outlined: 22.5px;
+
+  /* ---- Surfaces ---- */
+  --surface-walnut-shadow: #100904;
+  --surface-bark-brown: #382416;
+  --surface-cork-border: #40372e;
+  --surface-warm-cream: #ffedd7;
+}
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-walnut-shadow);
+  color: var(--color-warm-cream);
+  font-family: var(--font-halyard-display-variable);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* ================================================================
+   Typography Utility Classes
+   ================================================================ */
+
+.text-display {
+  font-size: var(--text-display);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-display);
+  text-transform: uppercase;
+}
+
+.text-heading {
+  font-size: var(--text-heading);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-heading);
+  text-transform: uppercase;
+}
+
+.text-heading-sm {
+  font-size: var(--text-heading-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-heading-sm);
+  text-transform: uppercase;
+}
+
+.text-subheading {
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-subheading);
+  text-transform: uppercase;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  text-transform: none;
+}
+
+.text-caption {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.text-micro {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.text-legal {
+  font-family: var(--font-arial);
+  font-size: 8px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.text-ember {
+  color: var(--color-ember-accent);
+}
+
+/* ================================================================
+   Layout Utilities
+   ================================================================ */
+
+.full-bleed {
+  width: 100vw;
+  position: relative;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: var(--color-walnut-shadow);
+}
+
+/* ================================================================
+   Components
+   ================================================================ */
+
+/* ---- Pill Button (Filled) ---- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  background: var(--color-bark-brown);
+  color: var(--color-warm-cream);
+  border-radius: var(--radius-buttons-pill);
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.btn-pill:hover {
+  opacity: 0.85;
+}
+
+/* ---- Outlined Ghost Button ---- */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  background: transparent;
+  color: var(--color-warm-cream);
+  border: 1px solid var(--color-warm-cream);
+  border-radius: var(--radius-buttons-outlined);
+  padding: 7.5px 0;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 237, 215, 0.06);
+}
+
+/* ---- Underline Text Link ---- */
+.link-underline {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-warm-cream);
+  padding: 0;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  line-height: 1;
+  border-bottom: 1px solid var(--color-warm-cream);
+  transition: opacity 0.2s ease;
+}
+
+.link-underline:hover {
+  opacity: 0.7;
+}
+
+/* ---- Input Field (Underline Only) ---- */
+.input-underline {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-warm-cream);
+  color: var(--color-warm-cream);
+  padding: 1px 2px;
+  font-family: var(--font-halyard-display-variable);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 0;
+  padding-right: 36px;
+}
+
+.input-underline::placeholder {
+  color: var(--color-driftwood);
+}
+
+/* ---- Card ---- */
+.card {
+  background: rgba(56, 36, 22, 0.5);
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  border: 1px solid var(--color-cork-border);
+}
+
+/* ---- Dashed Divider ---- */
+.divider-dashed {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px dashed var(--color-cork-border);
+}
+
+/* ---- Info Card (Hero Overlay) ---- */
+.info-card {
+  position: absolute;
+  bottom: var(--spacing-45);
+  left: var(--spacing-24);
+  max-width: 340px;
+  background: rgba(16, 9, 4, 0.72);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  border: 1px solid var(--color-cork-border);
+}
+
+/* ---- Video Thumbnail Card ---- */
+.video-thumb {
+  position: absolute;
+  bottom: var(--spacing-45);
+  right: var(--spacing-24);
+  width: 140px;
+  height: 84px;
+  background: var(--color-bark-brown);
+  border-radius: var(--radius-cards);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-6);
+  border: 1px solid var(--color-cork-border);
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.video-thumb:hover {
+  opacity: 0.85;
+}
+
+/* ---- Vertical Sidebar Label ---- */
+.sidebar-label {
+  position: fixed;
+  right: var(--spacing-12);
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  color: var(--color-warm-cream);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --text-display: 36px;
+    --text-heading: 28px;
+    --text-body: 20px;
+    --text-heading-sm: 18px;
+    --text-subheading: 16px;
+  }
+
+  .info-card {
+    bottom: var(--spacing-18);
+    left: var(--spacing-12);
+    right: var(--spacing-12);
+    max-width: none;
+  }
+
+  .video-thumb {
+    display: none;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+}
